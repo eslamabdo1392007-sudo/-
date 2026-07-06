@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مستشفى الدكتور مجدي يعقوب للقلب</title>
+  <meta name="description" content="موقع تعريفي لمستشفى الدكتور مجدي يعقوب للقلب يقدم خدمات متكاملة ورعاية صحية متقدمة في أمراض القلب والأوعية الدموية." />
+  <style>
+    :root {
+      --primary: #4237da;
+      --secondary: #1187f5;
+      --accent: #d7ddf0;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --bg: #f8fbff;
+      --white: #ffffff;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --transition: all 0.3s ease;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+    img { width: 100%; display: block; }
+    .container { width: min(1150px, 92%); margin: 0 auto; position: relative; }
+
+    header {
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      color: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .brand .logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--white);
+      color: var(--secondary);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+    }
+
+    .menu {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      font-size: 0.95rem;
+    }
+
+    .menu a:hover { opacity: 0.8; }
+    
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--secondary);
+      font-weight: 700;
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.15); }
+    
+    .menu-toggle { 
+      display: none; 
+      background: transparent; 
+      color: var(--white); 
+      border: 0; 
+      font-size: 1.5rem; 
+      cursor: pointer;
+    }
+
+    .hero {
+      padding: 80px 0 60px;
+      background: linear-gradient(135deg, rgba(31,78,121,0.96), rgba(13,110,253,0.86));
+      color: var(--white);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .hero p { font-size: 1.1rem; opacity: 0.95; max-width: 650px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 24px; }
+    .hero-actions .btn.alt { background: transparent; color: var(--white); border: 2px solid var(--white); }
+    .hero-actions .btn.alt:hover { background: var(--white); color: var(--secondary); }
+
+    .hero-card {
+      background: rgba(255,255,255,0.14);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card img {
+      border-radius: 18px;
+      height: 300px;
+      object-fit: cover;
+      margin-bottom: 14px;
+    }
+
+    section { padding: 80px 0; }
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+    .section-title h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: var(--primary);
+      position: relative;
+    }
+    .section-title p { color: var(--muted); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .card {
+      background: var(--white);
+      padding: 32px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .stat {
+      background: var(--bg);
+      border: 1px solid var(--accent);
+      padding: 15px 10px;
+      border-radius: 16px;
+      text-align: center;
+    }
+    .stat strong { display: block; font-size: 1.6rem; color: var(--primary); }
+    .stat span { font-size: 0.85rem; color: var(--muted); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .service {
+      background: var(--white);
+      padding: 32px 24px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    .service:hover { transform: translateY(-6px); box-shadow: 0 15px 35px rgba(15,23,42,0.12); }
+    .service .icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: var(--accent);
+      color: var(--primary);
+      display: grid;
+      place-items: center;
+      font-size: 1.6rem;
+      margin-bottom: 16px;
+    }
+    .service h3 { margin-bottom: 10px; }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .member {
+      background: var(--white);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    .member:hover { transform: translateY(-4px); }
+    .member img { height: 280px; object-fit: cover; }
+    .member .info { padding: 20px; text-align: center; }
+    .member .info h3 { font-size: 1.2rem; margin-bottom: 5px; }
+    .member .info p { color: var(--muted); font-size: 0.9rem; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 32px;
+      align-items: start;
+    }
+    
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      background: var(--bg);
+      border-radius: 12px;
+      font-size: 0.95rem;
+    }
+
+    form {
+      background: var(--white);
+      padding: 32px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+    .field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .field label { font-weight: 600; font-size: 0.9rem; }
+    input, textarea {
+      border: 1px solid #d9e5f2;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 1rem;
+      font-family: inherit;
+      outline: none;
+      transition: var(--transition);
+    }
+    input:focus, textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(66, 55, 218, 0.15); }
+    
+    form button {
+      width: 100%;
+      border: 0;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      color: var(--white);
+      padding: 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    form button:hover { opacity: 0.9; transform: translateY(-2px); }
+    .status-msg { color: #10b981; margin-top: 12px; font-size: 0.95rem; text-align: center; font-weight: 600; display: none; }
+
+    footer {
+      background: #0f172a;
+      color: #dbeafe;
+      padding: 30px 0;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    /* التجاوب مع الشاشات */
+    @media (max-width: 992px) {
+      .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .services-grid, .team-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle { display: inline-block; }
+      .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        color: var(--text);
+        padding: 20px;
+        border-radius: 16px;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        gap: 15px;
+        border: 1px solid var(--accent);
+      }
+      .menu.open { display: flex; }
+      .menu .btn { background: var(--primary); color: var(--white); text-align: center; width: 100%; }
+      
+      .services-grid, .team-grid { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
+      section { padding: 50px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="#top" class="brand">
+        <span class="logo">♥</span>
+        <span>مستشفى الدكتور مجدي يعقوب للقلب</span>
+      </a>
+      <nav class="menu" id="menu">
+        <a href="#about">من نحن</a>
+        <a href="#services">خدماتنا</a>
+        <a href="#team">الأطباء</a>
+        <a href="#contact">اتصل بنا</a>
+        <a href="#contact" class="btn">احجز زيارة</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">☰</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1>رعاية قلبية متقدمة مع خبرة طبية متميزة</h1>
+          <p>نقدم خدمات تشخيصية وعلاجية متطورة في بيئة طبية آمنة ومريحة، مع التركيز على جودة الرعاية ورضا المرضى.</p>
+          <div class="hero-actions">
+            <a href="#services" class="btn">اكتشف خدماتنا</a>
+            <a href="#contact" class="btn alt">تواصل معنا</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <img src="58915cb61321347936124a5ecdbce6bb.jpg" alt="مبنى مستشفى الدكتور مجدي يعقوب للقلب" />
+          <p>مستشفى متخصص في علاج أمراض القلب والأوعية الدموية، يقدم خدمات طبية متكاملة وفق أحدث المعايير العالمية.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div class="card">
+          <div class="section-title" style="text-align: right; margin-bottom: 16px;">
+            <h2>من نحن</h2>
+          </div>
+          <p>يُعد مستشفى الدكتور مجدي يعقوب للقلب من المؤسسات الطبية الرائدة التي تسعى إلى تقديم رعاية صحية متميزة لمرضى القلب، عبر فريق طبي متخصص، وتقنيات حديثة، ومناهج علاجية متطورة تضع سلامة المريض في مقدمة الأولويات.</p>
+          <div class="stats">
+            <div class="stat"><strong>24/7</strong><span>رعاية طارئة مستمرة</span></div>
+            <div class="stat"><strong>+95</strong><span>أخصائيًا واستشاريًا</span></div>
+            <div class="stat"><strong>98%</strong><span>نسبة رضا المرضى</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="section-title" style="text-align: right; margin-bottom: 16px;">
+            <h2>رسالتنا</h2>
+          </div>
+          <p>نسعى إلى تحسين جودة الحياة لمرضى القلب من خلال توفير رعاية شاملة، تشخيص دقيق، وعلاج آمن يعتمد على أحدث المعايير الطبية، مع الالتزام بالإنسانية والشفافية والاحترافية في كل خطوة.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>خدماتنا الطبية</h2>
+          <p>مجموعة من الخدمات المتخصصة في مجال القلب والأوعية الدموية</p>
+        </div>
+        <div class="services-grid">
+          <article class="service">
+            <div class="icon">🫀</div>
+            <h3>تشخيص أمراض القلب</h3>
+            <p>أشعة قلبية، تخطيط قلب، ومتابعة دقيقة للتشخيص المبكر للعيوب والأمراض.</p>
+          </article>
+          <article class="service">
+            <div class="icon">🩺</div>
+            <h3>العلاج التداخلي</h3>
+            <p>إجراءات طبية دقيقة تشمل عمليات القسطرة العلاجية والتدخلات التخصصية السريعة.</p>
+          </article>
+          <article class="service">
+            <div class="icon">🏥</div>
+            <h3>متابعة ما بعد العلاج</h3>
+            <p>خطة علاجية وفترات نقاهة شاملة ومتابعة دورية لضمان أفضل نتائج مستدامة.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="team">
+      <div class="container">
+        <div class="section-title">
+          <h2>فريق العمل</h2>
+          <p>أطباء ومختصون يحملون خبرة واسعة في مجال القلب</p>
+        </div>
+        <div class="team-grid">
+          <div class="member">
+            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=900&q=80" alt="الدكتور مجدي يعقوب" />
+            <div class="info">
+              <h3>الدكتور مجدي يعقوب</h3>
+              <p>مؤسس المستشفى والخبير الأول في جراحات القلب</p>
+            </div>
+          </div>
+          <div class="member">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=80" alt="طاقم تمريض مستشفى القلب" />
+            <div class="info">
+              <h3>فريق التمريض</h3>
+              <p>متخصصون في الرعاية الحرجة ومتابعة المرضى اليومية</p>
+            </div>
+          </div>
+          <div class="member">
+            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80" alt="أطباء قسم التشخيص" />
+            <div class="info">
+              <h3>قسم التشخيص</h3>
+              <p>يعمل بنخبة من الاستشاريين لتقديم تقارير دقيقة وسريعة</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container contact-grid">
+        <div class="card">
+          <div class="section-title" style="text-align: right; margin-bottom: 16px;">
+            <h2>تواصل معنا</h2>
+          </div>
+          <p>للحجز أو الاستفسار عن الخدمات الطبية، يمكنك التواصل معنا عبر النموذج أو بوسائل الاتصال التالية.</p>
+          
+          <div class="contact-details">
+            <div class="contact-item">📍 7 ش عزيز أباظة، متفرع من ش 26 يوليو، الزمالك، القاهرة</div>
+            <div class="contact-item">📞 الهاتف: 27365166 202+</div>
+            <div class="contact-item">✉️ البريد: info@drmagdy.com</div>
+          </div>
+        </div>
+
+        <form id="contactForm">
+          <div class="field">
+            <label for="name">الاسم</label>
+            <input id="name" name="name" type="text" placeholder="أدخل اسمك الكامل" required />
+          </div>
+          <div class="field">
+            <label for="phone">رقم الهاتف</label>
+            <input id="phone" name="phone" type="tel" placeholder="أدخل رقم الهاتف مع رمز الدولة" required />
+          </div>
+          <div class="field">
+            <label for="message">الرسالة</label>
+            <textarea id="message" name="message" rows="4" placeholder="اكتب استفسارك أو تفاصيل طلب الحجز هنا..." required></textarea>
+          </div>
+          <button type="submit">إرسال الطلب</button>
+          <p class="status-msg" id="formStatus">تم استلام رسالتك بنجاح، وسنواصل معك قريبًا.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> مستشفى الدكتور مجدي يعقوب للقلب. جميع الحقوق محفوظة. تنفيذ م. إسلام عبدالعليم</p>
+    </div>
+  </footer>
+
+  <script>
+    // التحكم في قائمة الموبايل
+    const menuToggle = document.getElementById('menuToggle');
+    const menu = document.getElementById('menu');
+
+    menuToggle?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menu.classList.toggle('open');
+    });
+
+    // إغلاق القائمة عند الضغط على أي رابط بداخلها أو خارجها
+    document.querySelectorAll('#menu a').forEach(link => {
+      link.addEventListener('click', () => menu.classList.remove('open'));
+    });
+    
+    document.addEventListener('click', () => menu.classList.remove('open'));
+
+    // تحديث السنة تلقائيًا
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // إرسال النموذج وتأكيد النجاح
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      status.style.display = 'block';
+      form.reset();
+      
+      // إخفاء رسالة النجاح بعد 5 ثوانٍ
+      setTimeout(() => {
+        status.style.display = 'none';
+      }, 5000);
+    });
+  </script>
+</body>
+</html>
